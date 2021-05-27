@@ -12,3 +12,21 @@ This particular workshop covers the various aspects of design in Verilog HDL bot
 
 ## Getting Started
 
+Users interested in practicing design using open-source tools need a Linux based OS and a host of open source EDA tools. More information regarding the installation and scripts can be found in the free UDemy tutorial [here.](https://www.udemy.com/course/vsd-a-complete-guide-to-install-open-source-eda-tools/?src=sac&kw=VSD+-+A+complete+guide+to)
+
+Basic knowledge of Verilog HDL is required to follow the content without any difficulties
+
+---
+## Day 1 -  Introduction to Verilog RTL Design and Synthesis
+
+The first day covers the basics of RTL Design, Testbench, Simulation and Synthesis. Open-Source softwares like iverilog (simulator) and YOSYS (Synthesis) are provided through remote access in the portal to practice labs.
+
+RTL Design -  It consists of an actual verilog code / a set of verilog codes that have the functionality to meet the required design specifications of the circuit
+TestBench - Testbench is a setup that one uses to apply a set of stimuli (test-case vector) to check the functional working of the design file
+
+We do the above processes using a simulator software. The simulator is loaded with the design and its respective testbench file after which it looks for changes in the input signals and depending on the change, the output is evaluated. These changes in input and corresponding output values are dumped in a special format file called "value change dump" (.vcd) file. This file can be pictorially represented in waveforms using a waveform tool like gtkwave. 
+
+We are given a default set of files and libraries shown below to work on using the practical lab instance
+
+<img src="images/verilog_files.jpg">
+

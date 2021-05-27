@@ -26,14 +26,14 @@ TestBench - Testbench is a setup that one uses to apply a set of stimuli (test-c
 
 We do the above processes using a simulator software. The simulator is loaded with the design and its respective testbench file after which it looks for changes in the input signals and depending on the change, the output is evaluated. These changes in input and corresponding output values are dumped in a special format file called "value change dump" (.vcd) file. This file can be pictorially represented in waveforms using a waveform tool like gtkwave. 
 
-### Setup the lab instance with libraries and verilog files
+### Part 1 -  Setup the lab instance with libraries and verilog files
 
 Firstly, we have to clone 2 separate repositories namely [vsdflow](https://github.com/kunalg123/vsdflow) and [sky130RTLDesignAndSynthesisWorkshop](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop) which contain the required library files and verilog design files to perform the simulations and logic synthesis parts of the workshop. It can be done using basic linux command gitclone ex: git clone https://github.com/kunalg123/vsdflow.git .
 We are given a default set of files and libraries shown below to work on using the practical lab instance
 
 <img src="images/verilog_files.jpg">
 
-### Simulation using iverilog simulator - 2:1 multiplexer rtl design
+### Part 2 - Simulation using iverilog simulator - 2:1 multiplexer rtl design
 
 After cloning the respective repositories in our lab instance, we perform a simulation run of 2:1 multiplexer rtl file namely good_mux.v and its corresponding testbench file tb_good_mux.v to obtain .vcd files and analyze the waveform in gtkwave to see the change in output instances with respect to change in input values. 
 
@@ -53,5 +53,26 @@ After cloning the respective repositories in our lab instance, we perform a simu
 
 <img src="images/GTKWave_Mux_Waveform.jpg">
 
-### Synthesis using YOSYS open-source tool
+### Part 3 -  Synthesis using YOSYS open-source tool
 
+After simulation of the rtl design with the respective testbench, we perform a synthesis of the design using Synthesizer. A Synthesizer is a tool used to convert the RTL Design into a netlist file (Standard Cell Format). To be more specific, a **netlist** is a standard gate level file that consists of nets, sequential and combinational cells and their connectivity of the corresponding RTL file coded using a HDL. In simple words, an rtl file is a code that describes the functionality of the design and a netlist is a file that expresses the same code in the form of logic cells like logic gates, flipflops, multiplexers with net connections etc. 
+
+Here, we use a synthesizer tool called [YOSYS](https://github.com/YosysHQ/yosys) which is a part of Qflow (open-source) tool chain for complete RTL2GDS transformation. The basic input files to YOSYS include the RTL Design file and .lib (library) files. 
+
+What is a .lib file?
+
+--> .lib files are a collection of logical modules which include logic gates like AND, OR, NOT, NAND, NOR etc. Each logic gate is stored in one or more flavours depending on the number of inputs and speed of the circuit (slow, fast & medium). 
+
+Why do we need different flavours of the same logic gate?
+
+--> Combinational delays present in a logic path determine the maximum speed and performance of a logic circuit. For Example, to get a maximum performance from a circuit, we need to design the circuit with minimum clock delays. 
+
+Inorder to obtain minimum clock delays, we require very fast cells to minimize the clock delays. 
+
+In the same way, inorder to avoid Hold violations in a logic path, we have to use SLOW cells to synchronize the hold time for logic path. 
+
+All these different types of fast and slow cells are present in a .lib file to be used by the synthesis software tool
+
+#### Faster Cells vs Slower Cells
+
+A cell delay in the digital logic circuit depends on the load of the circuit which here is Capacitance. 

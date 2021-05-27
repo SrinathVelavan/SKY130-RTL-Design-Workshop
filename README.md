@@ -26,7 +26,32 @@ TestBench - Testbench is a setup that one uses to apply a set of stimuli (test-c
 
 We do the above processes using a simulator software. The simulator is loaded with the design and its respective testbench file after which it looks for changes in the input signals and depending on the change, the output is evaluated. These changes in input and corresponding output values are dumped in a special format file called "value change dump" (.vcd) file. This file can be pictorially represented in waveforms using a waveform tool like gtkwave. 
 
+### Setup the lab instance with libraries and verilog files
+
+Firstly, we have to clone 2 separate repositories namely [vsdflow](https://github.com/kunalg123/vsdflow) and [sky130RTLDesignAndSynthesisWorkshop](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop) which contain the required library files and verilog design files to perform the simulations and logic synthesis parts of the workshop. It can be done using basic linux command gitclone ex: git clone https://github.com/kunalg123/vsdflow.git .
 We are given a default set of files and libraries shown below to work on using the practical lab instance
 
 <img src="images/verilog_files.jpg">
+
+### Simulation using iverilog simulator - 2:1 multiplexer rtl design
+
+After cloning the respective repositories in our lab instance, we perform a simulation run of 2:1 multiplexer rtl file namely good_mux.v and its corresponding testbench file tb_good_mux.v to obtain .vcd files and analyze the waveform in gtkwave to see the change in output instances with respect to change in input values. 
+
+#### Verilog file of a simple 2:1 multiplexer
+
+<img src="images/vim_good_mux.jpg">
+
+#### Verilog testbench file of the corresponding 2:1 multiplexer with stimuli
+
+<img src="images/vim_tb_good_mux.jpg">
+
+#### Simulation results using iverilog simulator
+
+<img src="images/goodmux_iverilog_simulation.jpg">
+
+#### Waveform using gtkwave
+
+<img src="images/GTKWave_Mux_Waveform.jpg">
+
+### Synthesis using YOSYS open-source tool
 

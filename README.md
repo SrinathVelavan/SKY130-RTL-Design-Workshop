@@ -76,3 +76,37 @@ All these different types of fast and slow cells are present in a .lib file to b
 #### Faster Cells vs Slower Cells
 
 A cell delay in the digital logic circuit depends on the load of the circuit which here is Capacitance. 
+
+Faster the charging / discharging of the capacitance --> Lesser is the Cell Delay
+
+Inorder to charge/discharge the capacitance faster, we use wider transistors that can source more current. This will help us reduce the cell delay but at the same time, wider transistors consumer more power and area. Similarly, using narrower transistors help in reduced area and power but the circuit will have a higher cell delay. Hence, we have to compromise on area and power if we are to design a circuit with low cell delay.
+
+#### Constraints 
+
+A Constraint is a guidance file given to a synthesizer inorder to enable an optimum implementation of the logic circuit by selecting the appropriate flavour of cells (fast or slow). 
+
+#### Practical Synthesis using YOSYS
+
+We perform a synthesis of the 2:1 Multiplexer RTL design using YOSYS with appropriate library files from SKY130 technology that we cloned into the directory. 
+
+Coding scripts for Synthesis using YOSYS
+
+$yosys                                                                             --> invokes YOSYS tool
+yosys> read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib           --> reads the corresponding library file
+yosys> read_verilog good_mux.v                                                     --> reads the Verilog script
+yosys> synth -top good_mux                                                         --> reads the top level module
+yosys> abc -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    --> converts the logic file to netlist
+yosys> show                                                                        --> Final netlist output display
+
+#### Screenshots of the Sysnthesis procedure using YOSYS
+
+<img src="images/yosys_read_liberty.jpg">
+
+<img src="images/read_verilog_synth.jpg">
+
+<img src="images/abc_liberty.jpg">
+
+<img src="images/nets_cells.jpg">
+
+<img src="images/Yosys_Netlist_good_mux.jpg">
+

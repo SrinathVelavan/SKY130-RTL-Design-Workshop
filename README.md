@@ -59,7 +59,7 @@ After simulation of the rtl design with the respective testbench, we perform a s
 
 Here, we use a synthesizer tool called [YOSYS](https://github.com/YosysHQ/yosys) which is a part of Qflow (open-source) tool chain for complete RTL2GDS transformation. The basic input files to YOSYS include the RTL Design file and .lib (library) files. 
 
-What is a .lib file?
+**What is a .lib file?**
 
 --> .lib files are a collection of logical modules which include logic gates like AND, OR, NOT, NAND, NOR etc. Each logic gate is stored in one or more flavours depending on the number of inputs and speed of the circuit (slow, fast & medium). 
 
@@ -110,3 +110,6 @@ yosys> show                                                                     
 
 <img src="images/Yosys_Netlist_good_mux.jpg">
 
+The final sysnthesized netlist shows that the 2:1 multiplexer RTL is translated to a gate level representation using buffers, 2 input NAND gate , and OR gate and an o2ai (OR,AND  & NOT gate) 
+
+----

@@ -92,10 +92,15 @@ We perform a synthesis of the 2:1 Multiplexer RTL design using YOSYS with approp
 Coding scripts for Synthesis using YOSYS
 
 $yosys                                                                             --> invokes YOSYS tool
+
 yosys> read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib           --> reads the corresponding library file
+
 yosys> read_verilog good_mux.v                                                     --> reads the Verilog script
+
 yosys> synth -top good_mux                                                         --> reads the top level module
+
 yosys> abc -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    --> converts the logic file to netlist
+
 yosys> show                                                                        --> Final netlist output display
 
 #### Screenshots of the Sysnthesis procedure using YOSYS

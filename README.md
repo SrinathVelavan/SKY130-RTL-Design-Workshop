@@ -234,3 +234,5 @@ When there is a very large complex design consisting of several modules, running
 
 <img src="images/All_flops_code.jpg">
 
+More information and examples of asynchronous and synchronous reset/set based flip-flop design can be found [here.](http://www.sunburst-design.com/papers/CummingsSNUG2003Boston_Resets.pdf). 
+

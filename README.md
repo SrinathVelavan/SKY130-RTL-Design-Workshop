@@ -272,11 +272,15 @@ yosys> abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 yosys> show 
 ```
 
-The Synthesized netlist of a Asynchronous Reset based D-Flipflop is displayed as follows. Similarly, using the above snippet, synthesis can be done for other D-Flipflop models in the verilog_models folder and netlist can be obtained for your study.
+The Synthesized netlist of a Asynchronous Reset based D-Flipflop is displayed as follows. 
 
 <img src="images/synth_dffasyncres.jpg">
 
-In the above netlist, it can be seen that the asynchronous reset D-Flipflop is implemented as a D-Flipflop with Active Low reset. This Active low reset is fed with an inverter to convert it into an Active High reset as an input to reset port of the flop. 
+In the above netlist, it can be seen that the asynchronous reset D-Flipflop is implemented as a D-Flipflop with Active Low reset. This Active low reset is fed with an inverter to convert it into an Active High reset as an input to reset port of the flop. Similarly, using the above snippet, synthesis can be done for other D-Flipflop models in the verilog_models folder and netlist can be obtained for your study.
+
+----
+
+
 
 
 

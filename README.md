@@ -157,5 +157,64 @@ For Example: A 2 input or gate has different flavours like or2_0, or2_1, or2_2 a
 
 <img src="images/or2_0_verilog.jpg">
 
-Based on the above images, it can be inferred that eventhough the behavioral logic of both the 2-input-OR gates or2_0 and or2_4 are same, they differ in their internal parameters like leakage power and area. The higher area of or2_4 infers that it employs wider transistors thereby confirming that it is a **fast** cell.
+Based on the above images, it can be inferred that eventhough the behavioral logic of both the 2-input-OR gates or2_0 and or2_4 are same, they differ in their internal parameters like leakage power and area. The higher area of or2_4 infers that it employs wider transistors thereby confirming that it is a ```fast cell```.
+
+### Part 2 - Hierarchical vs Flat Synthesis
+
+Let us consider an example code ```multiple_modules``` which instantiates an ```AND``` & and ```OR``` gate logic in separate sub-modules ```sub_module1``` & ```sub_module2``` respectively. The verilog code for the same is displayed below:
+
+<img src="images/multiple_modules_code.jpg">
+
+#### Hierarchical Synthesis
+
+When we synthesize this verilog code using ```YOSYS``` with the following code blocks:
+
+```
+$yosys
+yosys> read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib           
+
+yosys> read_verilog multiple_modules.v                                                     
+
+yosys> synth -top mutiple_modules                                                         
+
+yosys> abc -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    
+
+yosys> show multiple_modules 
+```
+
+We get a netlist comprising of sub_module1 & sub_module2 instead of the logic gates AND & OR based netlist. This is because, the multiple_modules RTL design eventhough is implementing two logic gates based circuit, the gates are actually instances inside two separate sub_modules that are instantiated to obtain the specific logic. This type of sub_module level synthesis is known as **Hierarchical Synthesis** as the sub_modules are preserved in its hierarchy.
+
+<img src="images/multiple_modules_netlist.jpg">
+
+Now, we can write out the netlist of the hierarchical netlist file and look at the behavioral implementation of the same. 
+
+```
+write_verilog -noattr multiple_modules_hier.v
+!gvim multiple_modules_hier.v
+```
+
+<img src="images/multiple_modules_hier.jpg">
+
+It can be seen that the OR gate is implemented using 2 ```INV``` and 1 ```NAND``` gate. This is because of a technical logic which is known as Stacked PMOS issue. Implementing a logic gate using Stacked PMOS concept results in poor mobility and is always avoided. That is why the OR gate was not implemented using 2 INV and 1 NOR gate logic as PMOS transistors are stacked in NOR gate implementation using transistors.
+
+#### Flat Synthesis
+
+Inorder to obtain a gate based synthesized netlist file without preserving any of the sub_module hierarchy, we implement the Flat Synthesis technique using the  flatten command. 
+
+``` 
+yosys> flatten
+```
+
+This command will implement the synthesis procedure without preserving the sub_module hierarchy and we obtain a netlist file of the multiple_modules RTL design implemented using the ```AND``` & ```OR``` gates
+
+The flattened netlist and verilog module of the netlist file are obtained and listed as follows:
+
+```
+write_verilog -noattr multiple_modules_flat.v
+!gvim multiple_modules_flat.v
+```
+
+<img src="images/multiple_modules_flatten_netlist.jpg">
+
+<img src="images/multiple_modules_flat.jpg">
 

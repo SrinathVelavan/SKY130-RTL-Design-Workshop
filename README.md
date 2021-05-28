@@ -276,6 +276,7 @@ The Synthesized netlist of a Asynchronous Reset based D-Flipflop is displayed as
 
 <img src="images/synth_dffasyncres.jpg">
 
+In the above netlist, it can be seen that the asynchronous reset D-Flipflop is implemented as a D-Flipflop with Active Low reset. This Active low reset is fed with an inverter to convert it into an Active High reset as an input to reset port of the flop. 
 
 
 

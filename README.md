@@ -102,7 +102,7 @@ yosys> read_verilog good_mux.v                                                  
 
 yosys> synth -top good_mux                                                         --> reads the top level module
 
-yosys> abc -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    --> converts the logic file to netlist
+yosys> abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    --> converts the logic file to netlist
 
 yosys> show                                                                        --> Final netlist output display
 ```
@@ -177,7 +177,7 @@ yosys> read_verilog multiple_modules.v
 
 yosys> synth -top mutiple_modules                                                         
 
-yosys> abc -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    
+yosys> abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    
 
 yosys> show multiple_modules 
 ```
@@ -253,4 +253,29 @@ The simulation results of 3 D-Flipflops with async-reset , sync-reset & async-re
 <img src="images/sim_syncresdff.jpg">
 
 <img src="images/sim_asyncressyncresdff.jpg">
+
+Further, the design files can be synthesized in YOSYS as we have done in the previous sessions. The one new command we use here is the ```dfflibmap``` command, that is used when we deploy D-FlipFlops in the RTL design. The **dfflibmap** command links or maps the library files that contain the details of D-Flipflops to be used for synthesis. The coding snippet for synthesizing a D-Flipflop in YOSYS is given below:
+
+``` 
+$yosys
+
+yosys> read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib           
+
+yosys> read_verilog dff_asyncres.v                                                     
+
+yosys> synth -top dff_asyncres                                                         
+
+yosys> dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+yosys> abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    
+
+yosys> show 
+```
+
+The Synthesized netlist of a Asynchronous Reset based D-Flipflop is displayed as follows. Similarly, using the above snippet, synthesis can be done for other D-Flipflop models in the verilog_models folder and netlist can be obtained for your study.
+
+<img src="images/synth_dffasyncres.jpg">
+
+
+
 

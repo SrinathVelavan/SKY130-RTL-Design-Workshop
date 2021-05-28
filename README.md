@@ -2,6 +2,7 @@
 
 <img src="images/Verilog-flyer.png">
 
+
 ## Project Scope
 
 The project provides a detailed account of the 5-day workshop facilitated by VSD on RTL Design in Verilog using the SKY130 Technology. 
@@ -9,6 +10,7 @@ The project provides a detailed account of the 5-day workshop facilitated by VSD
 SKY130 is the hardware industry's first open-source process design kit (PDK) released by SkyWater Technology Foundry in collaboration with Google giving all hardware design experts and aficionados, a worldwide access to their IP functions and open source ASICs. More details [here.](https://github.com/google/skywater-pdk)
 
 This particular workshop covers the various aspects of design in Verilog HDL both theoretically and practically with labs using open-source softwares through their VSD-IAT portal. Beginning with an introduction to digital design using Verilog HDL, the instructors cover digital design steps that include design, functional simulation, test bench based validation of the design functionality and logic Synthesis with optimization. Further, we learn about efficient verilog coding styles that result in a predictable logic in Silicon. 
+
 
 ## Getting Started
 
@@ -91,6 +93,7 @@ We perform a synthesis of the 2:1 Multiplexer RTL design using YOSYS with approp
 
 Coding scripts for Synthesis using YOSYS
 
+```
 $yosys                                                                             --> invokes YOSYS tool
 
 yosys> read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib           --> reads the corresponding library file
@@ -102,6 +105,7 @@ yosys> synth -top good_mux                                                      
 yosys> abc -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    --> converts the logic file to netlist
 
 yosys> show                                                                        --> Final netlist output display
+```
 
 #### Screenshots of the Sysnthesis procedure using YOSYS
 
@@ -138,4 +142,20 @@ tt --> Typical Process
 1v80 --> Voltage 
 
 Here, the tt_025C_1v80 denote the PVT (Process,Voltage & Temperature corners) of the library design. 
+
+Upon opening the .lib file for reference using 
+
+```gvim ../my_lib/lib/sky130_fd_sc_hd_tt_025C_1v80.lib```
+
+We get to see detailed parameter values of all the different flavours of standard cells (logic gates etc.). The parameters include the leakage power of each input value of the cell, area of the cell, cell footprint, cell leakage power, driver waveform etc. These parameters vary for each flavour of the same cell with the same functionality. 
+
+For Example: A 2 input or gate has different flavours like or2_0, or2_1, or2_2 and so on. Each cell has different values of leakage power, area etc. This is shown below:
+
+<img src="images/or2_0_cells.jpg">
+
+<img src="images/or2_4_cells.jpg">
+
+<img src="images/or2_0_verilog.jpg">
+
+Based on the above images, it can be inferred that eventhough the behavioral logic of both the 2-input-OR gates or2_0 and or2_4 are same, they differ in their internal parameters like leakage power and area. The higher area of or2_4 infers that it employs wider transistors thereby confirming that it is a **fast** cell.
 

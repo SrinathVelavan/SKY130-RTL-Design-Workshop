@@ -115,6 +115,6 @@ yosys> show                                                                     
 
 <img src="images/Yosys_Netlist_good_mux.jpg">
 
-The final sysnthesized netlist shows that the 2:1 multiplexer RTL is translated to a gate level representation using buffers, 2 input NAND gate , and OR gate and an o2ai (OR,AND  & NOT gate) 
+The final sysnthesized netlist shows that the 2:1 multiplexer RTL is translated to a gate level representation using buffers, 2 input NAND gate , and OR gate and an o21ai_0 (OR,AND  & NOT gate) 
 
 ----

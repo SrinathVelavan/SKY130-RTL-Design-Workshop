@@ -234,5 +234,23 @@ When there is a very large complex design consisting of several modules, running
 
 <img src="images/All_flops_code.jpg">
 
-More information and examples of asynchronous and synchronous reset/set based flip-flop design can be found [here.](http://www.sunburst-design.com/papers/CummingsSNUG2003Boston_Resets.pdf). 
+More information and examples of asynchronous and synchronous reset/set based flip-flop design can be found [here](http://www.sunburst-design.com/papers/CummingsSNUG2003Boston_Resets.pdf). 
+
+Inorder to simulate the RTL designs, we use the ```iverilog``` simulator to obtain simulated .vcd files that can be viewed using ```gtkwave``` analyzer. 
+
+Example Snippet:
+
+```
+iverilog dff_asyncres.v tb_asyncres.v
+./a.out
+gtkwave tb_dff_asyncres.vcd
+```
+
+The simulation results of 3 D-Flipflops with async-reset , sync-reset & async-reset sync-reset are as follows:
+
+<img src="images/sim_asyncresdff.jpg">
+
+<img src="images/sim_syncresdff.jpg">
+
+<img src="images/sim_asyncressyncresdff.jpg">
 

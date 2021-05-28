@@ -218,3 +218,13 @@ write_verilog -noattr multiple_modules_flat.v
 
 <img src="images/multiple_modules_flat.jpg">
 
+#### When do we need sub_module level Synthesis??
+
+* Multiple Instances of the same module within the top level design :
+
+When a design consists of multiple instances of the same module, we can use sub-module level synthesis and replicate the same for all the other instances of the same module and stitch it together to obtain the complete netlist file . This can be done by using one instance of the module in ```synth -top``` command.
+
+* Massive Complex Design:
+
+When there is a very large complex design consisting of several modules, running a complete synthesis will cause to tool like ```YOSYS``` to not provide expected results. In such a case the massive design can be split into small fragments in terms of sub-modules and synthesized separately to obtain simple netlist files and stitch back to get the netlist file of the complex design.
+

@@ -2,8 +2,6 @@
 
 <img src="images/Verilog-flyer.png">
 
-## [Getting Sterted](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#getting-started)
-
 ## Project Scope
 
 The project provides a detailed account of the 5-day workshop facilitated by VSD on RTL Design in Verilog using the SKY130 Technology. 

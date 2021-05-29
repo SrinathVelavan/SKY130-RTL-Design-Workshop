@@ -2,6 +2,7 @@
 
 <img src="images/Verilog-flyer.png">
 
+## [Getting Sterted](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#getting-started)
 
 ## Project Scope
 

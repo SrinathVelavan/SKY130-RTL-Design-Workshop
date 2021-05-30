@@ -438,6 +438,92 @@ The above code is a 3-bit counter that increments from 0 to 7 whenever reset is 
 
 ---
 
+## Day 4 - Gate Level Simulation(GLS), Blocking vs Non-blocking and Synthesis-Simulation Mismatch
+
+### Part 1 - What is Gate Level Simulation (GLS) ?
+
+Running the testbench against the synthesized netlist ouput as a DUT is known as Gate Level Simulation (GLS). The Output netlist should logically be same as the RTL code so that the testbench will align itself when we simulate both the files to obtain the waveforms.
+
+#### Why GLS?
+
+GLS is required to verify the logical correctness of the design post synthesis with the help of the netlist file. It ensures whether the timing of the design is met and for thi, the GLS used to run with delay annotations.
+
+#### How to perform GLS after obtaining a netlist output for a specific RTL design?
+
+To perform GLS using iverilog simulator, we need to add the path of the primitives and sky130 library files along with the netlist verilog code and testbench to successfully obtain the waveforms of post synthesis simulation.
+
+```
+$ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ***netlist_file.v*** ***testbench_file.v***
+```
+
+An example of GLS vs Simulation output is given below for a ternary operator mux RTL code.
+
+<img src="images/ternary_operator_mux.v.jpg">
+
+<img src="images/ternary_operator_mux_net.jpg">
+
+<img src="images/ternary_operator_mux_sim_wave.jpg">
+
+<img src="images/GLS_ternary_operator_mux.jpg">
+
+The above waveforms represent the Simulation results and GLS results of the ternary_operator_mux.v RTL code. It is obeserved that both the waveforms are same and hence state that GLS of netlist and Simulation of RTL match for all cases.
+
+### Part 2 - Synthesis - Simulation Mismatches
+
+Certain issues rise up when the simulation results of the RTL code do not match with that of the GLS of the synthesized netlist file. Such issues are known as Synthesis-Simulation mismatch. 
+
+#### Major causes of Synthesis-Simulation Mismatches are:
+     
+* Missing sensitivity lists
+* Blocking vs Non-blocking assignments
+* Non-standard verilog coding techniques
+
+#### Missing Sensitivity List
+
+A Simulator works based on an 'activity' --> change in outputs due to change in corresponding inputs. This change can occur to conditions or variables specified in the sensitivity lists. Whereas, a Synthesizer works by only looking at behavioural logic changes and not based on the signal changes in the sensitivity list.
+
+For Example: in an always block, the operation happens only when there is a change in signals listed inside the always block (sensitivity list). Therefore, it is conventional to mention all such signals with the always block. If one or two of the signals are not added to the sensitivity list, then the block may not run for changes in those respective signal changes. This can alter the simulation results and waveforms. But, since **Synthesizer** does not look at the sensitivity list, it executes the logic and provides a different set of waveform outputs during GLS.
+
+Such abnormalities in the simulation output waveforms case a Synthesize-Simulation mismatch due to missing sensitivity list.
+
+As an example Synth-Simulation mismatch due to missing sensitivity list is given below. The RTL is that of a bad implementation of a mux where the output changes in y are not reflected when the sel signal is 0. This is due to improper sensitivity list.
+
+<img src="images/bad_mux_code.jpg">
+
+<img src="images/bad_mux_net.jpg">
+
+<img src="images/bad_mux_sim_wave.jpg">
+
+<img src="images/GLS_bad_mux_wave.jpg">
+
+We can clearly see that the simulation of RTL code with testbench shows abnormalities as it follows activity changes where the sensitivity list is incomplete. Whereas, the synthesizer does not work based on the sensitivity list and hence the output of GLS is as per the logic intended. This is known as Synthesis-Simulation Mismatch
+     
+#### Blocking vs Non-blocking Assignments
+
+Blocking and Non-blocking statements are procedural assignment statements that can be implemented only inside an **always** block. 
+
+* Blocking Assignments --> **=** 
+    * Executes the statements in the order in which they are coded.
+* Non-blocking Assignments --> **<=** 
+    * Executes the RHS of all such assignments when the always block is entered and assigned to LHS in a parallel evaluation.
+
+Synthesis-Simulation mismatches due to incorrect ordering of the blocking assignments done inside an always block. 
+
+Let us consider an example code and its outputs below listed below.
+
+<img src="images/blocking_caveat_code.jpg">
+
+In the above mentioned code, the ordering of blocking assignments is wrong as the assignment of ``` d = x & c ``` is done before ``` x = a | b ```. The value of x in evaluation of d is missing as it happens only the consecutive statement. Hence, while performing a simulation, the output latches on to the past value of x resulting in a flop.
+
+<img src="images/blocking_caveat_net.jpg">
+
+The resulting synthesis netlist shows that it does not consider the mismatch due to incorrect ordering of the blocking statement. It follows the logic and implements a o21a_1 gate wih a,b,c as inputs. 
+
+<img src="images/blocking_caveat_sim-wave.jpg">
+
+<img src="images/GLS_blocking_caveat_wave.jpg">
+
+The Synthesis-Simulation mismatch is evident from the descriptions in the waveforms of simulations and GLS. 
 
 
 

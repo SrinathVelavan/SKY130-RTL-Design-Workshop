@@ -21,7 +21,12 @@
     * #### [Gate Level Simulation (GLS)](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#part-1---what-is-gate-level-simulation-gls-)
     * #### [Synthesis - Simulation Mismatches](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#part-2---synthesis---simulation-mismatches)
     * #### [Blocking vs Non-blocking Assignments](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#blocking-vs-non-blocking-assignments)
-  * ### [IF..CASE Statments & For Loop..For generate]
+  * ### [IF..CASE Statments & For Loop..For generate](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#ifcase-statments--for-loopfor-generate)
+    * #### [IF.. Statements](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#part-1---if-statements)
+    * #### [CASE.. Statements](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#part-2---case-statements)
+    * #### [FOR..loop vs FOR..GENERATE Statements](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#part-3---forloop-vs-forgenerate-statements)
+
+
  
   
   

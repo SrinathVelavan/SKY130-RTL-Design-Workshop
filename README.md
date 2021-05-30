@@ -645,7 +645,18 @@ Clearly, we can see that the RCA is working as intended and is implemented by 8 
 
 ----
 
+## ACKNOWLEDGEMENTS
 
+* [Kunal Ghosh](https://github.com/kunalg123), Co-Founder [(VLSI SYSTEM DESIGN - VSD)](https://www.vlsisystemdesign.com/?v=a98eef2a3105)
+* [Shon Taware](https://github.com/ShonTaware)
+
+
+## References
+
+* https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/?q=%2Frtl-design-using-verilog-with-sky130-technology%2F&v=a98eef2a3105
+* https://github.com/google/skywater-pdk
+* https://github.com/kunalg123/vsdflow
+* https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop
 
 
 

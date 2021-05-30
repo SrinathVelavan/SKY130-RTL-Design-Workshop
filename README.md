@@ -594,8 +594,51 @@ An example of a badly written case statement is given below. Here, the simulator
 
 <img src="images/GLS_bad_case_wave.jpg">
 
+In the above case, it is seen that GLS simulation has a mismatch with that of the simulation results of rtl vs testbench.
 
+### Part 3 - for..loop vs for..generate statements
 
+### for loop statements
+
+**for** loops are used in looping constructs to evaluate an expression for a repeated number of iterations. They are used inside an **always** block. They are not used in repeated instantiation of modules or HW blocks.
+
+Consider the following example of a 4:1 MUX code using for loop statements. Here, for loops are an easy way of repeatedly running an evaluation expression thereby saving coding space and time. The resulting rtl vs testbench and GLS waveforms match.
+
+<img src="images/mux_generate_code.jpg">
+
+<img src="images/mux_generate_sim_wave.jpg">
+
+<img src="images/GLS_mux_generate_sim_wave.jpg">
+
+### for..generate statements
+
+for..generate statements are used to instantiate a hardware module for a large number of instantiations. Ex: to instantiate an AND gate 100 times. They should **never** be used inside an **always** block.
+Syntax:
+
+```
+genvar i;
+generate
+     for(.....) begin
+      .........
+      .........
+     end
+```
+
+An example of using for..generate statements is given below. We use generate statements and for loop to implement an 8-bit Ripple Carry Adder which uses multiple instantiations of Full Adder block.
+
+<img src="images/fa_code.jpg">
+
+<img src="images/rca_code.jpg">
+
+<img src="images/rca_sim_wave.jpg">
+
+<img src="images/GLS_rca_sim_wave.jpg">
+
+<img src="images/rca_net.jpg">
+
+Clearly, we can see that the RCA is working as intended and is implemented by 8 instantiations of Full Adders FA - denoted in the netlist output. 
+
+----
 
 
 

@@ -370,6 +370,39 @@ Similarly, incase we use multiple modules in a single code, we use ```flatten```
 
 Some examples implemented are listed below:
 
+<img src="images/multiple_module_opt12_code.jpg">
+
+<img src="images/multiple_module_opt_net_alternate.jpg">
+
+<img src="images/multiple_module_opt2_net_alternate.jpg">
+
+<img src="images/multiplemoduleopt_net_code_alternate.jpg">
+
+<img src="images/multiplemoduleopt2_net_code_alternate.jpg">
+
+### Part 2 - Intro to Sequential Logic Optimizations
+
+For Sequential Logic optimization, let us the consider the codes below. They are different implementations of D-Flipflop dff with different cases of output assumptions based on the set and reset values. 
+
+<img src="images/dff_const123_code.jpg">
+
+Now when we try to simulate the verilog codes of dff_const1 & dff_const2 which are similar except for the output if reset is high, we can see different circuits that are created as a result of optimization of sequential logic. 
+
+<img src="images/dff_const1_wave.jpg">
+
+<img src="images/dff_const1_net.jpg">
+
+Incase of dff_const1, the output q doesn't immediately become high when reset is low. It waits for the next clock edge to assert back to high. Hence, here the final net will consist of a D-Flipflop with an active low reset. Since, we have coded the RTL to be of active high reset, the input to D-FF is an active high reset through an inverter. 
+
+<img src="images/dff_const2_wave.jpg">
+
+<img src="images/dff_const2_net.jpg">
+
+Incase dff_const2, the output of the logic is q = 1'b1 regardless of the condition of reset (high/low). Hence, the circuit is optimized to just contain the value of q = 1'b1 through a buffer. Here, a D-Flipflop is not synthesized as it is not needed for the logic function of the circuit.
+
+
+
+
 
 
 

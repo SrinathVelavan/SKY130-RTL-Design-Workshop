@@ -17,7 +17,13 @@
     * #### [Intro to Combinational Logic Optimizations](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-1---intro-to-combinational-logic-optimizations)
     * #### [Intro to Sequential Logic Optimizations](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-2---intro-to-sequential-logic-optimizations)
     * #### [Sequential Logic Optimizations of Un-used Outputs](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-3---sequential-logic-optimizations-of-un-used-outputs)
-  * ### [Gate Level Simulation (GLS), Blocking vs Non-blocking & Synthesis-Simulation Mismatch]
+  * ### [Gate Level Simulation (GLS), Blocking vs Non-blocking & Synthesis-Simulation Mismatch](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#day-4---gate-level-simulationgls-blocking-vs-non-blocking-and-synthesis-simulation-mismatch)
+    * #### [Gate Level Simulation (GLS)](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#part-1---what-is-gate-level-simulation-gls-)
+    * #### [Synthesis - Simulation Mismatches](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#part-2---synthesis---simulation-mismatches)
+    * #### [Blocking vs Non-blocking Assignments](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop#blocking-vs-non-blocking-assignments)
+  * ### [IF..CASE Statments & For Loop..For generate]
+ 
+  
   
 
 

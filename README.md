@@ -293,6 +293,83 @@ In the above netlist, it can be seen that the asynchronous reset D-Flipflop is i
 
 ----
 
+## Day 3 - Combinational and Sequential Optimizations
+
+### Part 1 - Intro to Combinational Logic Optimizations
+
+**Why do we need Combinational Logic Optimizations?**
+
+* Primarily to squeeze the logic to get the most optimized design
+  * An optimized design results in comprehensive Area and Power saving
+
+**Types of Combinational Optimizations**
+
+ * Constant Propagation
+    * Direct Optimization Technique
+ * Boolean Logic Optimization
+    * K-Map based 
+    * Quine Mckluskey Algorithms
+
+**CONSTANT PROPAGATION**
+
+In Constant propagation techniques, inputs that are no way related or affecting the changes in the output are ignored/optimized to simplify the combination logic thereby saving area and power usage by those input pins. 
+
+**BOOLEAN LOGIC OPTIMIZATION**
+
+Boolean logic optimization is nothing simplifying a complex boolean expression into a simplified expression by utilizing the laws of boolean logic algebra. 
+
+``` 
+assign y = a?(b?c:(c?a:0)):(!c)
+```
+
+The above equation can be very much simplified into 
+
+```
+y = a'c' + a(bc + b'ca) 
+y = a'c' + abc + ab'c 
+y = a'c' + ac(b+b') 
+y = a'c' + ac
+y = a xor c
+```
+
+Thus, the complex ternary operator based equation is simplified into a simple xor gate with two inputs a and c
+
+The following pictures depict the various versions of combination logic expressions simplified using Combinational logic optimization techniques.
+
+<img src="images/opt_check234_code.jpg">
+
+```
+$yosys
+
+yosys> read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib           
+
+yosys> read_verilog opt_check.v                                                     
+
+yosys> synth -top opt_check                                                         
+
+yosys> opt_clean -purge
+
+yosys> abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib                    
+
+yosys> show 
+```
+
+In the above snippet, we see a new code ```opt_clean -purge``` which is used to optimize the design by removing un-used net and components in the design after the design top level is synthesized using ```synt -top```
+
+<img src="images/optcheck_net.jpg">
+
+<img src="images/optcheck2_net.jpg">
+
+<img src="images/optcheck3_net.jpg">
+
+<img src="images/optcheck4_net.jpg">
+
+The above images depict various optimizations done on the expressions being simplified by boolean logic optimization.
+
+Similarly, incase we use multiple modules in a single code, we use ```flatten``` command as used in Flat Sysnthesis to perform the logic optimization of multiple modules after they are reduced to simple modules using flatten. 
+
+Some examples implemented are listed below:
+
 
 
 

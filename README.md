@@ -561,6 +561,40 @@ Let us consider another example of incomplete if.. statements where else..if con
 
 <img src="images/incomp_if2_net.jpg">
 
+### Part 2 - CASE.. Statements
+
+Similar to if..statements, **case** statements are implemented inside an always block and are inferred as multiplexer HW when synthesized. But, they can also infer latches if left incomplete. 
+
+Lets us understand by comparing the codes, waveforms and resulting netlists of 
+
+* A complete case statement
+* An incomplete case statement
+
+Given below is the code of an incomplete case statement example which will result in an inferred latch.
+
+<img src="images/incomp_case_code.jpg">
+
+<img src="images/incomp_case_wave.jpg">
+
+<img src="images/incomp_case_net.jpg">
+
+The example of an incomplete case mentioned above can easily be avoided by using a **default** statement while specifying case options. Let us consider the example of a complete case verilog code given below and verify the output waveforms and netlists.
+
+<img src="images/comp_case_code.jpg">
+
+<img src="images/comp_case_wave.jpg">
+
+<img src="images/comp_case_net.jpg">
+
+An example of a badly written case statement is given below. Here, the simulator gets confused when the value of sel is 2'b1? as it can either have 1 or 0 as value. This might result in a confusion as 2'b10 will then have two outputs i2 and i3. This mismatch is clearly explained in the waveforms of simulation and GLS listed below.
+
+<img src="images/bad_case_code.jpg">
+
+<img src="images/bad_case_wave.jpg">
+
+<img src="images/GLS_bad_case_wave.jpg">
+
+
 
 
 

@@ -400,6 +400,42 @@ Incase of dff_const1, the output q doesn't immediately become high when reset is
 
 Incase dff_const2, the output of the logic is q = 1'b1 regardless of the condition of reset (high/low). Hence, the circuit is optimized to just contain the value of q = 1'b1 through a buffer. Here, a D-Flipflop is not synthesized as it is not needed for the logic function of the circuit.
 
+Now, let us see the optimization we obtain for the implementation of dff_const3. 
+
+<img src="images/dff_const3_wave.jpg">
+
+<img src="images/dff_const3_net.jpg">
+
+Similarly, you can implement the logic of dff_const4 and dff_const5 and synthesize the logic and compare the net and waveforms. 
+
+### Part 3 - Sequential Logic Optimizations of Un-used Outputs
+
+In this special case of sequential optmization, we look at an example of a 3-bit counter code given below.
+
+```
+module counter_opt ( input clk, input reset, output q);
+reg [2:0] count;
+assign q = count[0];
+
+always @(posedge clk, posedge reset)
+begin
+     if(reset)
+             count <= 3'b000;
+     else
+             count <= count + 1;
+end
+endmodule
+```
+
+The above code is a 3-bit counter that increments from 0 to 7 whenever reset is low. But, we can see that the final output q denotes only the LSB of count that is count[0]. Therefore, the values of output count[2] and count[1] are un-used and in no way affect our output and logic. Thus, when we synthesize we obtain a circuit that only implements output count[0] and forms a toggle to the input of the D-Flipflip d-input. 
+
+<img src="images/counter_opt_net.jpg">
+
+---
+
+
+
+
 
 
 

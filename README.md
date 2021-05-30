@@ -13,7 +13,12 @@
     * #### [The .lib file](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-1---more-about-the-lib-file)
     * #### [Hierarchical vs Flat Synthesis](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-2---hierarchical-vs-flat-synthesis)
     * #### [Efficient Flipflop Coding Styles & Optimizations](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-3---efficient-flip-flop-coding-styles-and-optimizations)
-  * ### [Combinational & Sequentail Optimizations]
+  * ### [Combinational & Sequentail Optimizations](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#day-3---combinational-and-sequential-optimizations)
+    * ####[Intro to Combinational Logic Optimizations](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-1---intro-to-combinational-logic-optimizations)
+    * ####[Intro to Sequential Logic Optimizations](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-2---intro-to-sequential-logic-optimizations)
+    * ####[Sequential Logic Optimizations of Un-used Outputs](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-3---sequential-logic-optimizations-of-un-used-outputs)
+  * ### [Gate Level Simulation (GLS), Blocking vs Non-blocking & Synthesis-Simulation Mismatch]
+  
 
 
 ## Project Scope

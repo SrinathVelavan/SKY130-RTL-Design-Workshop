@@ -2,6 +2,14 @@
 
 <img src="images/Verilog-flyer.png">
 
+## Table Of Contents 
+  * ### [Project Scope](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#project-scope)
+  * ### [Getting Started](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#getting-started)
+  * ### [Introduction to Verilog RTL Design & Synthesis](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#day-1----introduction-to-verilog-rtl-design-and-synthesis)
+    * #### [Setting up libraries & lab instances](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-1----setup-the-lab-instance-with-libraries-and-verilog-files)
+    * #### [iverilog Simulation of 2:1 MUX RTL Design](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-2---simulation-using-iverilog-simulator---21-multiplexer-rtl-design)
+    * #### [Synthesis using YOSYS Tool](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#part-3----synthesis-using-yosys-open-source-tool)
+  * ### [Timing libs, Hierarchical vs Flat Synthesis & Efficient FlipFlop coding styles](https://github.com/SrinathVelavan/SKY130-RTL-Design-Workshop/blob/main/README.md#day-2---timing-libs-hierarchical-vs-flat-synthesis--efficient-flipflop-coding-styles)
 ## Project Scope
 
 The project provides a detailed account of the 5-day workshop facilitated by VSD on RTL Design in Verilog using the SKY130 Technology. 

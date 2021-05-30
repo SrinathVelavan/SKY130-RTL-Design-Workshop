@@ -531,6 +531,38 @@ The resulting synthesis netlist shows that it does not consider the mismatch due
 
 The Synthesis-Simulation mismatch is evident from the descriptions in the waveforms of simulations and GLS. 
 
+Therefore, ``` Always use blocking assignments for Combinational Logic & Non-blocking assignments for Sequential Logic```
+
+----
+
+## Day 5 - If.. Case Statements and for loop & for generate statements
+
+### Part 1 - If.. Statements
+
+**if** statements are used to write priority logic. It can infer a multiplexer HW is written properly. The top most / beginning if condition has the **highest priority**. If not written properly including all conditions and outputs, they can result in **INFERRED LATCHES**. 
+
+#### INFERRED LATCHES due to improper if constructs
+
+Consider the example of the code using if.. statement given below
+
+<img src="images/incomp_if_code.jpg">
+
+It is evident that the if.. conditions are not properly met. When i0 is 1, output y = i1, and the else condition of what happens when i0 is not 1 is left out without any mention. Hence, during synthesis, the yosys will consider retaining the previous value for y when i0 is not 1. This is the cause for inferred D-Latch that we see in the output netlist below.
+
+<img src="images/incomp_if_wave.jpg">
+
+<img src="images/incomp_if_net.jpg">
+
+Let us consider another example of incomplete if.. statements where else..if conditions are specified but the final else condition is omitted which also results in an inferred latch as specified in the output waveforms and netlists.
+
+<img src="images/incomp_if2_code.jpg">
+
+<img src="images/incomp_if2_wave.jpg">
+
+<img src="images/incomp_if2_net.jpg">
+
+
+
 
 
 
